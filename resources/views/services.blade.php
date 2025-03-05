@@ -54,14 +54,14 @@
             max-width: 800px;
             margin: 0 auto;
         }
-        .services {
+        .products {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 40px;
             margin-top: 40px;
         }
-        .service {
+        .product {
             width: 300px;
             padding: 20px;
             background-color: white;
@@ -69,17 +69,17 @@
             border-radius: 10px;
             text-align: center;
         }
-        .service img {
+        .product img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
         }
-        .service h3 {
+        .product h3 {
             font-size: 1.6em;
             margin: 15px 0;
         }
-        .service p {
+        .product p {
             font-size: 1em;
             line-height: 1.6;
         }
@@ -99,21 +99,23 @@
         <h1>{{ $content['title'] }}</h1>
     </header>
     <nav>
-    <a href="{{ url('/') }}">Home</a>
-        <a href={{ url('/about') }}>About</a>
-        <a href={{ url('/services') }}>Services</a>
-        <a href={{ url('/contact') }}>Contact</a>
+    <nav>
+        <a href="{{ url('/') }}">Home</a>
+        <a href="{{ url('/about') }}">About</a>
+        <a href="{{ url('/services') }}">Our Product</a>
+        <a href="{{ url('/contact') }}">Contact</a>
+    </nav>
     </nav>
     <section>
         <h2>{{ $content['heading'] }}</h2>
         <p>{{ $content['description'] }}</p>
 
-        <div class="services">
-            @foreach ($content['services'] as $service)
-            <div class="service">
-                <img src="{{ $service['image'] }}" alt="{{ $service['name'] }}">
-                <h3>{{ $service['name'] }}</h3>
-                <p>{{ $service['description'] }}</p>
+        <div class="products">
+            @foreach ($content['products'] as $product)
+            <div class="product">
+                <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
+                <h3>{{ $product['name'] }}</h3>
+                <p>{{ $product['description'] }}</p>
             </div>
             @endforeach
         </div>

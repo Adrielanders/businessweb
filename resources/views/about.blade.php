@@ -6,7 +6,7 @@
     <title>{{ $content['title'] }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Add any global styles here */
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -99,15 +99,19 @@
         <h1>{{ $content['title'] }}</h1>
     </header>
     <nav>
-    <a href="{{ url('/') }}">Home</a>
-        <a href={{ url('/about') }}>About</a>
-        <a href={{ url('/services') }}>Services</a>
-        <a href={{ url('/contact') }}>Contact</a>
+        <a href="{{ url('/') }}">Home</a>
+        <a href="{{ url('/about') }}">About</a>
+        <a href="{{ url('/services') }}">Our Product</a>
+        <a href="{{ url('/contact') }}">Contact</a>
     </nav>
     <section>
-        <h2>{{ $content['heading'] }}</h2>
-        <p>{{ $content['description'] }}</p>
-        
+        <h2>Our Story</h2>
+        <p>{{ $content['story'] }}</p>
+
+        <h2>Our Mission & Values</h2>
+        <p>{{ $content['mission'] }}</p>
+
+        <h2>Meet Our Team</h2>
         <div class="team">
             @foreach ($content['team'] as $member)
             <div class="team-member">
@@ -119,7 +123,7 @@
         </div>
     </section>
     <footer>
-        <p>&copy; 2025 Business Placeholder. All rights reserved.</p>
+        <p>&copy; 2025 GreenLampung. All rights reserved.</p>
     </footer>
 </body>
 </html>

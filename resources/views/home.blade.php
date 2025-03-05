@@ -24,7 +24,7 @@
             color: white;
             padding: 20px;
             text-align: center;
-            position: relative; /* Needed for the Edit button positioning */
+            position: relative;
         }
 
         header h1 {
@@ -86,53 +86,22 @@
             margin: 0 auto;
         }
 
-        .placeholder-img {
-            width: 100%;
-            height: 400px;
-            background-color: #ddd;
-            margin: 50px 0;
+        .cta {
+            margin: 30px 0;
         }
 
-        .service-section {
-            background-color: #e3f2fd;
-            padding: 60px 20px;
-        }
-
-        .service-section h2 {
-            margin-bottom: 40px;
-        }
-
-        .services {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .service {
-            width: 300px;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        .service img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px 10px 0 0;
-            background-color: #ddd;
-        }
-
-        .service h3 {
-            font-size: 1.6em;
-            margin: 15px 0;
-        }
-
-        .service p {
+        .cta button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             font-size: 1em;
-            line-height: 1.6;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cta button:hover {
+            background-color: #388e3c;
         }
 
         footer {
@@ -161,29 +130,22 @@
     <nav>
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/about') }}">About</a>
-        <a href="{{ url('/services') }}">Services</a>
+        <a href="{{ url('/services') }}">Our Product</a>
         <a href="{{ url('/contact') }}">Contact</a>
     </nav>
     <section>
-        <h2>{{ $content['welcome_message'] }}</h2>
-        <p>{{ $content['intro_paragraph'] }}</p>
+        <h2>Sustainable Growth for Lampung’s Farmers</h2>
+        <p>Turning waste into opportunity—helping farmers with eco-friendly fertilizers.</p>
+
+        <div class="cta">
+            <button>Get Free Fertilizer</button>
+            <button>Partner With Us</button>
+        </div>
+
         <div class="placeholder-img"></div>
     </section>
-    <!-- Uncomment if you want to display services section -->
-    <!-- <section class="service-section">
-        <h2>Our Services</h2>
-        <div class="services">
-            @foreach ($content['services'] as $service)
-            <div class="service">
-                <img src="{{ $service['image'] }}" alt="{{ $service['name'] }}">
-                <h3>{{ $service['name'] }}</h3>
-                <p>{{ $service['description'] }}</p>
-            </div>
-            @endforeach
-        </div>
-    </section> -->
     <footer>
-        <p>&copy; 2025 Business Placeholder. All rights reserved.</p>
+        <p>&copy; 2025 GreenLampung. All rights reserved.</p>
     </footer>
 </body>
 </html>
