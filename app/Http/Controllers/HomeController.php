@@ -15,10 +15,12 @@ class HomeController extends Controller
         }
 
         $title = $content['title'];
+        $welcome_message = $content['welcome_message'];
 
         return view('home', [
             'Title'   => $title,
-            'content' => $content
+            'content' => $content,
+            'welcome' => $welcome_message
         ]);
     }
 }

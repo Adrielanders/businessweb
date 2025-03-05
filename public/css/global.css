@@ -81,12 +81,23 @@ footer {
 }
 
 .navbar {
-    transition: all 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(10px);
+    /* Efek kaca */
+    transition: background 0.3s ease-in-out;
+    /* Efek smooth */
 }
 
-.navbar.scrolled {
-    background: rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(10px);
+.navbar:hover {
+    background: rgba(255, 255, 255, 0.3);
+
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    /* Mencegah overlay menghalangi klik */
 }
 
 /* FONT  */

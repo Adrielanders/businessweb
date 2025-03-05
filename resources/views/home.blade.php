@@ -18,19 +18,20 @@
 </nav>
 
 
-<header class="position-relative text-center text-white bg-dark" style="height: 60vh; background: url('{{ asset('image/BackGround.jpg') }}') center/cover no-repeat;">
+<header class="position-relative text-center text-white bg-dark"
+    style="height: 60vh; background: url('{{ asset('image/BackGround.jpg') }}') center/cover no-repeat;">
+
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">
-        <h1 class="display-4 fw-bold">Sustainable Growth for Lampung’s Farmers</h1>
+        <h1 class="display-4 fw-bold">{{$welcome}}</h1>
         <p class="lead">Turning waste into opportunity—helping farmers with eco-friendly fertilizers.</p>
         <div>
-            <a href="#" class="btn btn-primary btn-lg me-2">Get Free Fertilizer</a>
-            <a href="#" class="btn btn-success btn-lg">Partner With Us</a>
+            <button type="button" class="btn btn-primary btn-lg me-2">Get Free Fertilizer</button>
+            <button type="button" class="btn btn-success btn-lg">Partner With Us</button>
         </div>
     </div>
-    <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.3);"></div>
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
 </header>
 
-<!-- Our Products Section -->
 <section class="py-5 bg-light text-center">
     <div class="container">
         <h2 class="fw-bold">Our Products</h2>
@@ -51,15 +52,4 @@
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener("scroll", function() {
-        let navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-    });
-</script>
 @stop
