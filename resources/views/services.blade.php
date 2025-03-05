@@ -17,28 +17,42 @@
             background-color: #f4f4f4;
             color: #333;
         }
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: #0d47a1;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: inline-block;
+        }
+        .navbar a:hover {
+            background-color: #e3f2fd;
+        }
         header {
-            background-color: #0d47a1;
+            position: relative;
+            height: 60vh;
+            background: url('{{ asset("image/BackGround.jpg") }}') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: white;
-            padding: 20px;
             text-align: center;
         }
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
             font-weight: 600;
+            z-index: 1;
         }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px 0;
-            background-color: #1565c0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
         }
         section {
             padding: 60px 20px;
@@ -53,6 +67,7 @@
             line-height: 1.8;
             max-width: 800px;
             margin: 0 auto;
+            color: #666;
         }
         .products {
             display: flex;
@@ -68,6 +83,10 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .product:hover {
+            transform: translateY(-10px);
         }
         .product img {
             width: 100%;
@@ -82,6 +101,20 @@
         .product p {
             font-size: 1em;
             line-height: 1.6;
+            color: #555;
+        }
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            background-color: #0d47a1;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #1565c0;
         }
         footer {
             background-color: #0d47a1;
@@ -95,17 +128,24 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>{{ $content['title'] }}</h1>
-    </header>
-    <nav>
-    <nav>
+
+    <!-- Navbar -->
+    <nav class="navbar">
         <a href="{{ url('/') }}">Home</a>
         <a href="{{ url('/about') }}">About</a>
         <a href="{{ url('/services') }}">Our Product</a>
         <a href="{{ url('/contact') }}">Contact</a>
     </nav>
-    </nav>
+
+    <!-- Header Section with Background Image -->
+    <header>
+        <div class="overlay"></div>
+        <div class="container">
+            <h1>{{ $content['title'] }}</h1>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
     <section>
         <h2>{{ $content['heading'] }}</h2>
         <p>{{ $content['description'] }}</p>
@@ -116,12 +156,16 @@
                 <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}">
                 <h3>{{ $product['name'] }}</h3>
                 <p>{{ $product['description'] }}</p>
+                <button class="btn">Learn More</button>
             </div>
             @endforeach
         </div>
     </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Business Placeholder. All rights reserved.</p>
+        <p>&copy; 2025 GreenLampung. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
