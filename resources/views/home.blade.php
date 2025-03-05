@@ -128,10 +128,16 @@
         @endauth
     </header>
     <nav>
-        <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/about') }}">About</a>
-        <a href="{{ url('/services') }}">Our Product</a>
-        <a href="{{ url('/contact') }}">Contact</a>
+    <nav>
+    <a href="{{ url('/') }}">Home</a>
+    <a href="{{ url('/about') }}">About</a>
+    <a href="{{ url('/services') }}">Services</a>
+    <a href="{{ url('/contact') }}">Contact</a>
+    <a href="{{ url('/impact') }}">Impact</a> <!-- Added Impact section -->
+    <a href="{{ url('/get-involved') }}">Get Involved</a> <!-- Added Get Involved section -->
+    <a href="{{ url('/blog') }}">Blog</a> <!-- Added Blog section -->
+</nav>
+
     </nav>
     <section>
         <h2>Sustainable Growth for Lampung’s Farmers</h2>
