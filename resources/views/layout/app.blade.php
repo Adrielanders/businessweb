@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $content['title'] }}</title>
     <link href="{{ asset('css\global.css') }}" rel="stylesheet">
+    <link href="{{ asset('css\bootstrap5.3.2.css') }}" rel="stylesheet">
+    <script src="{{ asset('JS\bootstrap5.3.2.js') }}"></script>
 </head>
 <body>
     <div class="content">

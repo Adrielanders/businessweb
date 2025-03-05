@@ -1,97 +1,92 @@
+/* Menghilangkan margin bawaan */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
 header {
-    background-color: #0d47a1;
-    color: white;
-    padding: 20px;
-    text-align: center;
     position: relative;
+    color: white;
+    text-align: center;
+    height: 60vh;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 header h1 {
-    font-size: 2.5em;
-    font-weight: 600;
+    font-size: 2.8rem;
+    font-weight: bold;
+    z-index: 2;
 }
 
-/* Edit button styling */
-.edit-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #ff5722;
-    color: white;
+header p {
+    font-size: 1.2rem;
+    z-index: 2;
+}
+
+.btn-lg {
+    font-size: 1rem;
+    padding: 12px 24px;
+}
+
+/* Card Section */
+.card {
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
-.edit-btn:hover {
-    background-color: #e64a19;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 15px 0;
-    background-color: #1565c0;
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1em;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-section p {
-    font-size: 1.2em;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.cta {
-    margin: 30px 0;
-}
-
-.cta button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.cta button:hover {
-    background-color: #388e3c;
-}
-
+/* Footer */
 footer {
-    background-color: #0d47a1;
-    color: white;
-    text-align: center;
-    padding: 20px;
+    font-size: 0.9rem;
 }
 
-footer p {
-    font-size: 0.9em;
+.navbar {
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
 }
 
 /* FONT  */
