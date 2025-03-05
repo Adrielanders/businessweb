@@ -99,10 +99,10 @@
         <h1>{{ $content['title'] }}</h1>
     </header>
     <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/services">Services</a>
-        <a href="/contact">Contact</a>
+    <a href="{{ url('/') }}">Home</a>
+        <a href={{ url('/about') }}>About</a>
+        <a href={{ url('/services') }}>Services</a>
+        <a href={{ url('/contact') }}>Contact</a>
     </nav>
     <section>
         <h2>{{ $content['heading'] }}</h2>
