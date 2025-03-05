@@ -24,11 +24,30 @@
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative; /* Needed for the Edit button positioning */
         }
 
         header h1 {
             font-size: 2.5em;
             font-weight: 600;
+        }
+
+        /* Edit button styling */
+        .edit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .edit-btn:hover {
+            background-color: #e64a19;
         }
 
         nav {
@@ -131,19 +150,27 @@
 <body>
     <header>
         <h1>{{ $content['title'] }}</h1>
+
+        <!-- Show Edit button only if user is logged in -->
+        @auth
+            <a href="{{ route('edit.page') }}">
+                <button class="edit-btn">Edit</button>
+            </a>
+        @endauth
     </header>
     <nav>
         <a href="{{ url('/') }}">Home</a>
-        <a href={{ url('/about') }}>About</a>
-        <a href={{ url('/services') }}>Services</a>
-        <a href={{ url('/contact') }}>Contact</a>
+        <a href="{{ url('/about') }}">About</a>
+        <a href="{{ url('/services') }}">Services</a>
+        <a href="{{ url('/contact') }}">Contact</a>
     </nav>
     <section>
         <h2>{{ $content['welcome_message'] }}</h2>
         <p>{{ $content['intro_paragraph'] }}</p>
         <div class="placeholder-img"></div>
     </section>
-    <section class="service-section">
+    <!-- Uncomment if you want to display services section -->
+    <!-- <section class="service-section">
         <h2>Our Services</h2>
         <div class="services">
             @foreach ($content['services'] as $service)
@@ -154,7 +181,7 @@
             </div>
             @endforeach
         </div>
-    </section>
+    </section> -->
     <footer>
         <p>&copy; 2025 Business Placeholder. All rights reserved.</p>
     </footer>

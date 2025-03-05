@@ -38,10 +38,19 @@ Route::post('/admin/update-about', [AdminController::class, 'updateAbout'])->nam
 
 
 // Route to show the CMS form for editing services
-Route::get('/admin/services', [AdminController::class, 'editServices'])->name('admin.services');
+Route::get('/admin/edit-services', [AdminController::class, 'editServices'])->name('admin.edit-services');
 
 // Route to update the services
-Route::post('/admin/services', [AdminController::class, 'updateServices'])->name('admin.update-services');
+Route::post('/admin/update-services', [AdminController::class, 'updateServices'])->name('admin.update-services');
 
 // Route to display the Services page to users
 Route::get('/services', [AdminController::class, 'showServices'])->name('services');
+
+
+Route::get('/contact', [AdminController::class, 'showContact'])->name('contact');
+
+// Route to show the CMS form for editing services
+Route::get('/admin/edit-contact', [AdminController::class, 'editContact'])->name('admin.edit-contact');
+
+// Route to update the services
+Route::post('/admin/edit-services', [AdminController::class, 'updateContact'])->name('admin.update-contact');
