@@ -54,3 +54,7 @@ Route::get('/admin/edit-contact', [AdminController::class, 'editContact'])->name
 
 // Route to update the services
 Route::post('/admin/edit-services', [AdminController::class, 'updateContact'])->name('admin.update-contact');
+
+Route::get('/get-involved', [AdminController::class, 'showInvolved'])->name('involved');
+
+Route::get('/impact', [AdminController::class, 'showImpact'])->name('impact');

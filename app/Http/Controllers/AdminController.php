@@ -125,4 +125,22 @@ class AdminController extends Controller
         return redirect()->route('admin.edit-contact')->with('status', 'contact page updated successfully!');
     }
 
+   public function showInvolved(){
+        $contentPath = 'get-involved.json';  // Path within the storage
+        if (Storage::exists($contentPath)) {
+            $content = json_decode(Storage::get($contentPath), true);
+        }
+
+
+        return view('get-involved', compact('content'));
+    }
+    public function showImpact(){
+        $contentPath = 'impact.json';  // Path within the storage
+        if (Storage::exists($contentPath)) {
+            $content = json_decode(Storage::get($contentPath), true);
+        }
+
+
+        return view('impact', compact('content'));
+    }
 }

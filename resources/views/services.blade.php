@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('body')
-
+<!-- 
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold text-primary" href="#">{{ $content['title'] }}</a>
@@ -16,7 +16,7 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 
 
     <header class="position-relative text-center text-white bg-dark"

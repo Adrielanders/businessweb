@@ -1,159 +1,27 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $content['title'] }}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f7f9fc;
-      
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #333;
-            text-align: center;
-            color: white;
-        }
-
-        header {
-            background-color: #0d47a1;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px 0;
-            background-color: #1565c0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        form {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        label {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        input[type="text"], input[type="email"], textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            background-color: #f9f9f9;
-        }
-
-        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-            outline: none;
-            border-color: #1565c0;
-            background-color: #fff;
-        }
-
-        textarea {
-            min-height: 100px;
-        }
-
-        button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #1565c0;
-            color: white;
-            font-size: 1rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0d47a1;
-        }
-
-        .status {
-            padding: 10px;
-            background-color: #dff0d8;
-            color: #3c763d;
-            border: 1px solid #d6e9c6;
-            border-radius: 6px;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background-color: #0d47a1;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        footer p {
-            font-size: 0.9em;
-        }
-
-        .contact-info {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .contact-info p {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body> -->
-
 @extends('layout.app')
 @section('body')
-    <header>
-        <h1>{{ $content['title'] }}</h1>
-    </header>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    body {
+        background-color: #f5f5f5; /* Soft gray background */
+    }
+    .social-icons a {
+        margin: 0 10px;
+        color: #333;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    .social-icons a:hover {
+        color: #0d47a1; /* Color change on hover */
+    }
+</style>
+
+<!-- Navbar -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">{{$content['title']}}</a>
+        <a class="navbar-brand fw-bold text-primary" href="#">{{ $content['title'] }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -166,34 +34,73 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
 
-    @if (session('status'))
-        <div class="status">{{ session('status') }}</div>
-    @endif
+<!-- Main Section -->
+<section class="py-5">
+    <div class="container">
+        <!-- Status Message -->
+        @if (session('status'))
+            <div class="alert alert-success">{{ session('status') }}</div>
+        @endif
 
-    <form action="#" method="POST">
-        @csrf
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
+        <!-- Contact Form -->
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <form action="#" method="POST" class="shadow-sm p-4 rounded border bg-light">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control text-muted" required>
+                    </div>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control text-muted" required>
+                    </div>
 
-        <label for="message">Message:</label>
-        <textarea name="message" id="message" required></textarea>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message:</label>
+                        <textarea name="message" id="message" class="form-control text-muted" rows="5" required></textarea>
+                    </div>
 
-        <button type="submit">Send Message</button>
-    </form>
+                    <button type="submit" class="btn btn-dark">Send Message</button>
+                </form>
+            </div>
+        </div>
 
-    <div class="contact-info">
-        <p>Email: {{ $content['email'] }}</p>
-        <p>Phone: {{ $content['phone'] }}</p>
+        <!-- Contact Info -->
+        <div class="row mt-5">
+            <div class="col-md-6 mx-auto text-center">
+                <div class="contact-info">
+                    <p class="fw-bold">Email: {{ $content['email'] }}</p>
+                    <p class="fw-bold">Phone: {{ $content['phone'] }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Business Placeholder. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+<!-- Social Media & Map Section -->
+<section class="py-5 bg-white text-center">
+    <div class="container">
+        <h3>Follow Us on Social Media</h3>
+        <div class="social-icons mt-3">
+            <a href="https://instagram.com/yourpage" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/yourwhatsappnumber" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+
+        <h3 class="mt-5">Our Location</h3>
+        <div class="map-responsive mt-3">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345097646!2d144.9537363153517!3d-37.81720974202305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e33!2sMelbourne%2C%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1602823098387!5m2!1sen!2sin"
+                width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Font Awesome CDN for social media icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 @stop
