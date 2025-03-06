@@ -31,11 +31,11 @@
         <h2>Our Story</h2>
         <p>{{ $content['story'] }}</p>
 
-        <h2>Our Mission & Values</h2>
-        <p>{{ $content['mission'] }}</p>
+        <h2 class="fw-bold mt-5">Our Mission & Values</h2>
+        <p class="text-muted">{{ $content['mission'] }}</p>
 
-        <h2>Meet Our Team</h2>
-        <div class="team">
+        <h2 class="fw-bold mt-5">Meet Our Team</h2>
+        <div class="row mt-4">
             @foreach ($content['team'] as $member)
             <div class="team-member card">
                 <img src="{{ $member['image'] }}" alt="{{ $member['name'] }}">
