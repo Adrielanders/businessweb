@@ -13,14 +13,15 @@ class HomeController extends Controller
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
         }
-
+   
         $title = $content['title'];
         $welcome_message = $content['welcome_message'];
-
+        $subtext    = $content['intro_paragraph'];
         return view('home', [
             'Title'   => $title,
             'content' => $content,
-            'welcome' => $welcome_message
+            'welcome' => $welcome_message,
+            'subtext' => $subtext,
         ]);
     }
 }
