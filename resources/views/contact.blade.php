@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -143,17 +143,30 @@
         }
     </style>
 </head>
-<body>
+<body> -->
+
+@extends('layout.app')
+@section('body')
     <header>
         <h1>{{ $content['title'] }}</h1>
     </header>
 
-    <nav>
-        <a href="{{ url('/') }}">Home</a>
-        <a href="{{ url('/about') }}">About</a>
-        <a href="{{ url('/services') }}">Services</a>
-        <a href="{{ url('/contact') }}">Contact</a>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">{{$content['title']}}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">Our Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
     @if (session('status'))
         <div class="status">{{ session('status') }}</div>
@@ -183,3 +196,4 @@
     </footer>
 </body>
 </html>
+@stop
