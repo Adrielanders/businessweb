@@ -23,7 +23,7 @@
 
     <div class="container d-flex flex-column justify-content-center align-items-center h-100">
         <h1 class="display-4 fw-bold">{{$welcome}}</h1>
-        <p class="lead">Turning waste into opportunity—helping farmers with eco-friendly fertilizers.</p>
+        <p class="lead">{{$subtext}}</p>
         <div>
             <button type="button" class="btn btn-primary btn-lg me-2">Get Free Fertilizer</button>
             <button type="button" class="btn btn-success btn-lg">Partner With Us</button>
@@ -32,24 +32,67 @@
     <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
 </header>
 
+
 <section class="py-5 bg-light text-center">
     <div class="container">
         <h2 class="fw-bold">Our Products</h2>
         <p class="text-muted">Eco-friendly fertilizers that improve soil health.</p>
-
-        <div class="row mt-4">
-            @foreach ($content['services'] as $service)
-            <div class="col-md-4">
-                <div class="card shadow-sm">
-                    <img src="{{ $service['image'] }}" class="card-img-top" alt="{{ $service['name'] }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $service['name'] }}</h5>
-                        <p class="card-text">{{ $service['description'] }}</p>
+        <div class="swiper mySwiper mt-5">
+            <div class="swiper-wrapper">
+                @foreach ($content['services'] as $service)
+                <div class="swiper-slide">
+                    <div class="card shadow-sm">
+                        <img src="{{ $service['image'] }}" class="card-img-top" alt="{{ $service['name'] }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $service['name'] }}</h5>
+                            <p class="card-text">{{ $service['description'] }}</p>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
 </section>
+
+
+
+@stop
+@section('script')
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+            },
+        });
+    });
+
+</script>
 @stop
