@@ -8,9 +8,17 @@
         <h1 class="display-4 fw-bold">{{$welcome}}</h1>
         <p class="lead">{{$subtext}}</p>
         <div>
-            <button type="button" class="btn btn-lg me-2" style="background-color: #007bff !important; color: #fff !important; box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important; border: none !important;">Get Free Fertilizer</button>
-            <button type="button" class="btn btn-lg" style="background-color: #28a745 !important; color: #fff !important; box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important; border: none !important;">Partner With Us</button>
-        </div>
+    <a href="{{ url('contact') }}">
+        <button type="button" class="btn btn-lg me-2" style="background-color: #007bff; color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none;">
+            Get Free Fertilizer
+        </button>
+    </a>
+    <a href="{{ url('contact') }}">
+        <button type="button" class="btn btn-lg" style="background-color: #28a745; color: #fff; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none;">
+            Partner With Us
+        </button>
+    </a>
+</div>
     </div>
     
     <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;"></div>
