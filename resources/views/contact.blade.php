@@ -6,6 +6,20 @@
     body {
         background-color: #f5f5f5; /* Soft gray background */
     }
+    header.contact-header {
+        background-color: black;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+    }
+    header.contact-header h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+    h1{
+        margin-top: ;
+    }
     .social-icons a {
         margin: 0 10px;
         color: #333;
@@ -18,23 +32,14 @@
     }
 </style>
 
-<!-- Navbar -->
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">{{ $content['title'] }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="{{ url('/') }}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">Our Product</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
-            </ul>
-        </div>
+<!-- Contact Us Header -->
+<header class="position-relative text-center text-white bg-dark">
+    <div class="container d-flex flex-column justify-content-center align-items-center h-100">
+        <h1 class="display-4 fw-bold">{{ $content['title'] }}</h1>
+  
     </div>
-</nav> -->
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+</header>
 
 <!-- Main Section -->
 <section class="py-5">
