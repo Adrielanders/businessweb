@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://cdn.tiny.cloud/1/4u4i7mnntdjp35mdep6ufxqimmcy8vkyo8d82hp0f2xic1ag/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.desc'
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Contact Information</title>
+    <title>Edit Contact Page</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -22,7 +30,6 @@
             font-size: 2rem;
             margin-bottom: 20px;
             color: #333;
-            text-align: center;
         }
 
         form {
@@ -42,7 +49,8 @@
             color: #333;
         }
 
-        input[type="text"], input[type="email"] {
+        input[type="text"],
+        textarea {
             width: 100%;
             padding: 10px;
             font-size: 1rem;
@@ -52,10 +60,15 @@
             background-color: #f9f9f9;
         }
 
-        input[type="text"]:focus, input[type="email"]:focus {
+        input[type="text"]:focus,
+        textarea:focus {
             outline: none;
             border-color: #1565c0;
             background-color: #fff;
+        }
+
+        textarea {
+            min-height: 100px;
         }
 
         button {
@@ -83,10 +96,26 @@
             margin-bottom: 20px;
         }
 
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Edit Contact Information</h1>
+    <h1>Edit Contact Page Content</h1>
+    <a href="{{ url('admin') }}" class="btn btn-default">back</a>
 
     @if (session('status'))
         <div class="status">{{ session('status') }}</div>
@@ -94,23 +123,31 @@
 
     <form action="{{ route('admin.update-contact') }}" method="POST">
         @csrf
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{ $content['title'] }}" required><br>
 
-        <label for="title">Page Title:</label>
-        <input type="text" name="title" id="title" value="{{ $content['title'] }}" required>
+        <label for="email">Contact Email:</label>
+        <input type="text" class="desc" name="email" value="{{ $content['email'] }}" required><br>
 
-        <label for="welcome_message">Welcome Message:</label>
-        <input type="text" name="welcome_message" id="welcome_message" value="{{ $content['welcome_message'] }}" required>
+        <label for="phone">Contact Phone:</label>
+        <input type="text" class="desc" name="phone" value="{{ $content['phone'] }}" required><br>
 
-        <label for="intro_paragraph">Introduction Paragraph:</label>
-        <input type="text" name="intro_paragraph" id="intro_paragraph" value="{{ $content['intro_paragraph'] }}" required>
+        <label for="instagram">Instagram:</label>
+        <input type="text" name="instagram" value="{{ $content['instagram'] }}" required><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" value="{{ $content['email'] }}" required>
+        <label for="whatsapp">WhatsApp:</label>
+        <input type="text" name="whatsapp" value="{{ $content['whatsapp'] }}" required><br>
 
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" id="phone" value="{{ $content['phone'] }}" required>
+        <label for="linkedin">LinkedIn:</label>
+        <input type="text" name="linkedin" value="{{ $content['linkedin'] }}" required><br>
+
+        <label for="map">Map: (Google Maps->Share-> Embed a map, yes, copy it with the iframe tag) </label>
+        <textarea name="map"  required>{{ $content['map'] }}</textarea><br>
+
+
 
         <button type="submit">Save Changes</button>
     </form>
 </body>
+
 </html>

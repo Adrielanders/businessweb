@@ -3,15 +3,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 class AdminController extends Controller
 {
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        // Invalidate the session
+        $request->session()->invalidate();
+
+        // Regenerate the session token to prevent session fixation attacks
+        $request->session()->regenerateToken();
+
+        // Redirect to login page or home
+        return redirect('/login');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            // Autentikasi berhasil, perbarui sesi
+            $request->session()->regenerate();
+        
+            // Alihkan pengguna ke halaman yang dituju
+            return redirect()->intended('/admin');
+        }
+
+ 
+      
+
+        return back()->withErrors(['email' => 'The provided credentials do not match our records.'])->withInput();
+    }
+    public function showLogin()
+    {
+        return view('login');
+    }
+
+    public function index()
+    {
+        return view('admin.index');
+    }
     public function editHome()
     {
         // Load current homepage content from JSON
-      
-    
-    
+
+
+
         $contentPath = 'homepage.json';  // Path within the storage
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
@@ -22,20 +69,9 @@ class AdminController extends Controller
 
     public function updateHome(Request $request)
     {
-        // Validate form inputs
-        $data = $request->validate([
-            'title' => 'required|string',
-            'welcome_message' => 'required|string',
-            'intro_paragraph' => 'required|string',
-            'services' => 'array',
-            'services.*.name' => 'required|string',
-            'services.*.description' => 'required|string',
-            'services.*.image' => 'required|url',
-        ]);
-
-        // Save updated data to JSON file
-        $contentPath = 'homepage.json';  // Path within the storage
-     
+        $data = $request->all();
+        // dd($data);
+        $contentPath = 'homepage.json';
         Storage::put($contentPath, json_encode($data));
 
         return redirect()->back()->with('status', 'Homepage updated successfully!');
@@ -56,6 +92,7 @@ class AdminController extends Controller
     public function updateAbout(Request $request)
     {
         $data = $request->all();
+        // dd($data);
         $contentPath = 'about.json';
         Storage::put($contentPath, json_encode($data));
 
@@ -68,6 +105,7 @@ class AdminController extends Controller
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
         }
+
 
         return view('admin.edit-services', compact('content'));
     }
@@ -95,7 +133,8 @@ class AdminController extends Controller
         return view('services', compact('content'));
     }
 
-    public function showContact(){
+    public function showContact()
+    {
         $contentPath = 'contact.json';  // Path within the storage
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
@@ -125,7 +164,8 @@ class AdminController extends Controller
         return redirect()->route('admin.edit-contact')->with('status', 'contact page updated successfully!');
     }
 
-   public function showInvolved(){
+    public function showInvolved()
+    {
         $contentPath = 'get-involved.json';  // Path within the storage
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
@@ -134,13 +174,80 @@ class AdminController extends Controller
 
         return view('get-involved', compact('content'));
     }
-    public function showImpact(){
+
+    public function editInvolved()
+    {
+        $contentPath = 'get-involved.json';  // Path within the storage
+        if (Storage::exists($contentPath)) {
+            $content = json_decode(Storage::get($contentPath), true);
+        }
+
+        return view('admin.edit_get_involved', compact('content'));
+    }
+
+    // Update the services content
+    public function updateInvolved(Request $request)
+    {
+        $data = $request->all();
+        $contentPath = 'get-involved.json';
+        Storage::put($contentPath, json_encode($data));
+
+        return redirect()->route('admin.edit-involved')->with('status', 'Get Involved page updated successfully!');
+    }
+
+
+    public function showImpact()
+    {
         $contentPath = 'impact.json';  // Path within the storage
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
         }
 
 
-        return view('impact', compact('content'));
+        return view('IMPACT', compact('content'));
     }
+
+    public function editImpact()
+    {
+        $contentPath = 'impact.json';  // Path within the storage
+        if (Storage::exists($contentPath)) {
+            $content = json_decode(Storage::get($contentPath), true);
+        }
+
+        return view('admin.edit_impact', compact('content'));
+    }
+
+    // Update the services content
+    public function updateImpact(Request $request)
+    {
+        $data = $request->all();
+        $contentPath = 'impact.json';
+        Storage::put($contentPath, json_encode($data));
+
+        return redirect()->route('admin.edit-impact')->with('status', 'Impact page updated successfully!');
+    }
+
+
+
+
+    // public function showAll(){
+
+
+
+    //     return view('admin.edit_all');
+    // }
+
+    // public function gethomedata(){
+    //     $contentPath = 'homepage.json';
+
+    //     if (Storage::exists($contentPath)) {
+    //         $content = json_decode(Storage::get($contentPath), true);
+    //         return response()->json($content);
+    //     } else {
+    //         return response()->json(['error' => 'File not found'], 404);
+    //     }
+    // }
+
+
+
 }

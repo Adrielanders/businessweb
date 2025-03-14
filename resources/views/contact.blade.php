@@ -78,8 +78,8 @@
         <div class="row mt-5">
             <div class="col-md-6 mx-auto text-center">
                 <div class="contact-info">
-                    <p class="fw-bold">Email: {{ $content['email'] }}</p>
-                    <p class="fw-bold">Phone: {{ $content['phone'] }}</p>
+                    <p class="fw-bold">Email: {!!  $content['email']  !!}</p>
+                    <p class="fw-bold">Phone: {!!  $content['phone']  !!}</p>
                 </div>
             </div>
         </div>
@@ -91,16 +91,14 @@
     <div class="container">
         <h3>Follow Us on Social Media</h3>
         <div class="social-icons mt-3">
-            <a href="https://instagram.com/yourpage" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://wa.me/yourwhatsappnumber" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="{{ $content['instagram'] }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="{{ $content['whatsapp'] }}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="{{ $content['linkedin'] }}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
 
         <h3 class="mt-5">Our Location</h3>
         <div class="map-responsive mt-3">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345097646!2d144.9537363153517!3d-37.81720974202305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e33!2sMelbourne%2C%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1602823098387!5m2!1sen!2sin"
-                width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            {!! $content['map'] !!}
         </div>
     </div>
 </section>

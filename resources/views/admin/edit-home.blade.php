@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://cdn.tiny.cloud/1/4u4i7mnntdjp35mdep6ufxqimmcy8vkyo8d82hp0f2xic1ag/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.desc'
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Homepage</title>
@@ -73,7 +80,7 @@
             color: #555;
         }
 
-        .service {
+        .solution {
             margin-bottom: 30px;
         }
 
@@ -105,6 +112,7 @@
 </head>
 <body>
     <h1>Edit Homepage Content</h1>
+    <a href="{{ url('admin') }}" class ="btn btn-default">Back</a>
 
     @if (session('status'))
         <div class="status">{{ session('status') }}</div>
@@ -112,27 +120,41 @@
 
     <form action="{{ route('admin.update-home') }}" method="POST">
         @csrf
-        <label for="title">Title:</label>
+
+        <!-- Title -->
+        <label for="title">Page Title:</label>
         <input type="text" name="title" value="{{ $content['title'] }}" required><br>
 
-        <label for="welcome_message">Welcome Message:</label>
-        <input type="text" name="welcome_message" value="{{ $content['welcome_message'] }}" required><br>
+        <!-- Welcome Message -->
+        <label for="welcome">Welcome Message:</label>
+        <input type="text" name="welcome" value="{{ $content['welcome'] }}" required><br>
 
-        <label for="intro_paragraph">Intro Paragraph:</label>
-        <textarea name="intro_paragraph" required>{{ $content['intro_paragraph'] }}</textarea><br>
+        <!-- Subtext -->
+        <label for="subtext">Subtext:</label>
+        <input type="text" class ="desc" name="subtext" value="{{ $content['subtext'] }}" required><br>
 
-        <h2>Services</h2>
-        @foreach ($content['services'] as $index => $service)
-        <div class="service">
-            <h3>Service {{ $index + 1 }}</h3>
-            <label for="services[{{ $index }}][name]">Name:</label>
-            <input type="text" name="services[{{ $index }}][name]" value="{{ $service['name'] }}" required><br>
+        <!-- Section Title -->
+        <label for="section_title">Section Title:</label>
+        <input type="text" name="section_title" value="{{ $content['section_title'] }}" required><br>
 
-            <label for="services[{{ $index }}][description]">Description:</label>
-            <textarea name="services[{{ $index }}][description]" required>{{ $service['description'] }}</textarea><br>
+        <!-- Section Description -->
+        <label for="section_description">Section Description:</label>
+        <textarea name="section_description"  class ="desc" required>{{ $content['section_description'] }}</textarea><br>
 
-            <label for="services[{{ $index }}][image]">Image URL:</label>
-            <input type="text" name="services[{{ $index }}][image]" value="{{ $service['image'] }}" required><br>
+        <h2>Solutions</h2>
+
+        <!-- Loop through Solutions -->
+        @foreach ($content['solutions'] as $index => $solution)
+        <div class="solution">
+            <h3>Solution {{ $index + 1 }}</h3>
+
+            <!-- Solution Title -->
+            <label for="solutions[{{ $index }}][title]">Title:</label>
+            <input type="text" name="solutions[{{ $index }}][title]" value="{{ $solution['title'] }}" required><br>
+
+            <!-- Solution Description -->
+            <label for="solutions[{{ $index }}][description]">Description:</label>
+            <textarea  class ="desc" name="solutions[{{ $index }}][description]" required>{{ $solution['description'] }}</textarea><br>
         </div>
         @endforeach
 

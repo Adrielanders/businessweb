@@ -15,11 +15,11 @@
         <h2 class="fw-bold mb-4 text-center">Ways to Get Involved</h2>
 
         @foreach ($content['sections'] as $section)
-        <div class="row mb-5" id="{{ $section['id'] }}">
+        <div class="row mb-5" >
             @if ($loop->index % 2 == 0)
             <div class="col-md-6 d-flex flex-column justify-content-center">
                 <h3 class="fw-bold">{{ $section['heading'] }}</h3>
-                <p>{{ $section['description'] }}</p>
+                <p>{!!  $section['description'] !!}</p>
                 <a href="{{ url($section['button_link']) }}" class="btn btn-dark">{{ $section['button_text'] }}</a>
             </div>
             <div class="col-md-6">
@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-6 d-flex flex-column justify-content-center">
                 <h3 class="fw-bold">{{ $section['heading'] }}</h3>
-                <p>{{ $section['description'] }}</p>
+                <p>{!! $section['description']  !!}</p>
                 <a href="{{  url($section['button_link']) }}" class="btn btn-dark">{{ $section['button_text'] }}</a>
             </div>
             @endif

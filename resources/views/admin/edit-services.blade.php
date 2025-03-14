@@ -94,9 +94,29 @@
             background-color: #0d47a1;
         }
     </style>
+        <script src="https://cdn.tiny.cloud/1/4u4i7mnntdjp35mdep6ufxqimmcy8vkyo8d82hp0f2xic1ag/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '.desc'
+        });
+    </script>
+    <style>
+           .status {
+            padding: 10px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
+
+
     <h1>Edit Page Content</h1>
+    <a href="{{ url('admin') }}" class ="btn btn-default">back</a>
 
     <form action="{{ route('admin.update-services') }}" method="POST">
         @csrf
@@ -109,7 +129,7 @@
         <input type="text" name="heading" value="{{ $content['heading'] }}" required><br>
 
         <label for="description">Page Description:</label>
-        <textarea name="description" required>{{ $content['description'] }}</textarea><br>
+        <textarea name="description" class = "desc" required>{{ $content['description'] }}</textarea><br>
 
         <h2>Services</h2>
         @foreach ($content['services'] as $index => $service)
@@ -120,7 +140,7 @@
             <input type="text" name="services[{{ $index }}][name]" value="{{ $service['name'] }}" required><br>
 
             <label for="services[{{ $index }}][description]">Service Description:</label>
-            <textarea name="services[{{ $index }}][description]" required>{{ $service['description'] }}</textarea><br>
+            <textarea class = "desc" name="services[{{ $index }}][description]" required>{{ $service['description'] }}</textarea><br>
 
             <label for="services[{{ $index }}][image]">Image URL:</label>
             <input type="text" name="services[{{ $index }}][image]" value="{{ $service['image'] }}" required><br>
