@@ -40,12 +40,4 @@
 
     </div>
 </section>
-
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-        <p>GreenLampung &copy; 2025. All Rights Reserved.</p>
-    </div>
-</footer>
-
 @stop
