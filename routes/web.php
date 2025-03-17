@@ -65,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/update-impact', [AdminController::class, 'updateImpact'])->name('admin.update-impact');
 
     // Admin Dashboard Route
-    Route::get('/admin/', [AdminController::class, 'index'])->name('admin.index');
+    // Route::get('/admin/', [AdminController::class, 'index'])->name('admin.index');
     Route::post('/logout/', [AdminController::class, 'logout'])->name('logout');
 });
 
