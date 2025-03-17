@@ -77,7 +77,7 @@
 
 @section('content')
 <body>
-    <h1>Edit Contact Page Content</h1>
+  
     <a href="{{ url('admin') }}" class="btn btn-default">Back</a>
 
     @if (session('status'))

@@ -1,8 +1,8 @@
 @extends('layout.adminapp')
 
-@section('title', 'Edit Get Involved Page')
+@section('title', 'Edit Page')
 
-@section('dashboard-title', 'Edit Get Involved Page Content')
+@section('dashboard-title', 'Edit Product Page Content')
 
 @section('styles')
     <style>
@@ -81,7 +81,7 @@
 
 @section('content')
 <body>
-    <h1>Edit Page Content</h1>
+  
     <a href="{{ url('admin') }}" class="btn btn-default">Back</a>
 
     <form action="{{ route('admin.update-services') }}" method="POST">

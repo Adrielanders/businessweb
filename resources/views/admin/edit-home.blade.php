@@ -90,7 +90,7 @@
 
 @section('content')
 <body>
-    <h1>Edit Homepage Content</h1>
+
     <a href="{{ url('admin') }}" class="btn btn-default">Back</a>
 
     @if (session('status'))
