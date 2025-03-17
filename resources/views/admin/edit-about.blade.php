@@ -89,7 +89,7 @@
 @endsection
 
 @section('content')
-    <h1>Edit About Page Content</h1>
+  
     <a href="{{ url('admin') }}" class="btn btn-default">Back</a>
 
     @if (session('status'))
