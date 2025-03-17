@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -15,14 +16,14 @@ class AdminController extends Controller
     {
         Auth::logout();
 
-        // Invalidate the session
         $request->session()->invalidate();
-
-        // Regenerate the session token to prevent session fixation attacks
         $request->session()->regenerateToken();
 
-        // Redirect to login page or home
-        return redirect('/login');
+        if ($request->ajax()) {
+            return response()->json(['message' => 'Logout berhasil.'], 200);
+        }
+
+        return redirect()->route('login');
     }
     public function login(Request $request)
     {
@@ -34,13 +35,13 @@ class AdminController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             // Autentikasi berhasil, perbarui sesi
             $request->session()->regenerate();
-        
+
             // Alihkan pengguna ke halaman yang dituju
             return redirect()->intended('/admin');
         }
 
- 
-      
+
+
 
         return back()->withErrors(['email' => 'The provided credentials do not match our records.'])->withInput();
     }
@@ -76,7 +77,7 @@ class AdminController extends Controller
 
         return redirect()->back()->with('status', 'Homepage updated successfully!');
     }
-    
+
     public function editAbout()
     {
         $contentPath = 'about.json';
@@ -198,8 +199,8 @@ class AdminController extends Controller
 
     public function showImpact()
     {
-    
-        $contentPath = 'impact.json';  
+
+        $contentPath = 'impact.json';
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
         }

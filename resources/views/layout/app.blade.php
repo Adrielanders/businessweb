@@ -10,6 +10,7 @@
     <link href="{{ asset('css\global.css') }}" rel="stylesheet">
     <link href="{{ asset('css\bootstrap5.3.2.css') }}" rel="stylesheet">
     <link href="{{ asset('css\swiper11.css') }}" rel="stylesheet">
+    <link href="{{ asset('css\googleapis.css') }}" rel="stylesheet">
 </head>
 
 <style>
