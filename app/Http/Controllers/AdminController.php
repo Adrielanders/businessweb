@@ -198,13 +198,14 @@ class AdminController extends Controller
 
     public function showImpact()
     {
-        $contentPath = 'impact.json';  // Path within the storage
+    
+        $contentPath = 'impact.json';  
         if (Storage::exists($contentPath)) {
             $content = json_decode(Storage::get($contentPath), true);
         }
 
 
-        return view('IMPACT', compact('content'));
+        return view('impact', compact('content'));
     }
 
     public function editImpact()
