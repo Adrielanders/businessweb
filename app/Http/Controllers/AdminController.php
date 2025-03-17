@@ -37,7 +37,7 @@ class AdminController extends Controller
             $request->session()->regenerate();
 
             // Alihkan pengguna ke halaman yang dituju
-            return redirect()->intended('/admin');
+            return redirect()->intended('/admin/edit-home');
         }
 
 
